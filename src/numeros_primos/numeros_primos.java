@@ -1,3 +1,5 @@
+package numeros_primos;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +29,7 @@ import java.util.List;
 public class numeros_primos {
 
     public static void main(String[] args) {
-
         encontrarPrimos(2, 40);
-        pegarNumerosNaRange(2, 40);
     }
 
     public static void encontrarPrimos(Integer n1, Integer n2) {
@@ -37,8 +37,8 @@ public class numeros_primos {
         List<Integer> numerosPrimos = new ArrayList<>();
 
         for (Integer num : pegarNumerosNaRange(n1, n2)) {
-            
-
+            if(isPrime(num))
+                numerosPrimos.add(num);
         }
 
         numerosPrimos.forEach(System.out::println);
@@ -50,6 +50,17 @@ public class numeros_primos {
             numeros.add(i);
         }
         return numeros;
+    }
+
+    static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= num / 2; i++) {
+            if ((num % i) == 0)
+                return false;
+        }
+        return true;
     }
 
 }
